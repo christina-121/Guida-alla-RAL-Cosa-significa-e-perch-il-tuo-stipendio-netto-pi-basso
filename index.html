@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guida alla RAL · stipendio lordo e netto</title>
+  <!-- Font & base per UI/UX pulita con animazioni eleganti -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f2f5f9 0%, #e3e9f2 100%);
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      color: #1e2b3c;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .article-card {
+      max-width: 1100px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 4rem 4rem 3.2rem 3.2rem;
+      box-shadow: 0 50px 90px -30px #1f3b5c, 0 15px 30px -15px #0e1e30;
+      padding: 3rem 3.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.5s;
+      animation: ralRise 0.9s cubic-bezier(0.12, 0.75, 0.3, 1) forwards;
+    }
+
+    .article-card:hover {
+      box-shadow: 0 70px 110px -30px #1f5280;
+    }
+
+    @keyframes ralRise {
+      0% { opacity: 0; transform: translateY(45px) scale(0.97); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* animazione lampeggiante per concetti chiave */
+    @keyframes softBlink {
+      0% { background: rgba(215, 230, 250, 0.1); border-left-color: #1f6e9c; border-right-color: #1f6e9c; }
+      40% { background: rgba(215, 230, 250, 0.4); border-left-color: #e8aa4d; border-right-color: #e8aa4d; }
+      80% { background: rgba(215, 230, 250, 0.2); border-left-color: #1f6e9c; border-right-color: #1f6e9c; }
+      100% { background: rgba(215, 230, 250, 0.1); border-left-color: #1f6e9c; border-right-color: #1f6e9c; }
+    }
+
+    .blink-ral {
+      animation: softBlink 3.4s infinite ease-in-out;
+      border-left: 10px solid #1a5f8b;
+      border-right: 10px solid #1a5f8b;
+      border-radius: 4rem;
+      padding: 2rem 2.5rem;
+      background: rgba(225, 240, 255, 0.25);
+      margin: 3rem 0;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      background: linear-gradient(145deg, #1f5882, #12384f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 4px solid #c3daf5;
+      padding-bottom: 1rem;
+    }
+
+    .title-emoji {
+      font-size: 4rem;
+      filter: drop-shadow(2px 8px 16px #5692c2);
+    }
+
+    .subhead {
+      font-size: 1.4rem;
+      font-weight: 340;
+      color: #1f6e9c;
+      margin-bottom: 2.2rem;
+      padding-left: 2.2rem;
+      border-left: 8px solid #e7aa4d;
+      background: #e5f1fd70;
+      border-radius: 0 80px 80px 0;
+      padding: 0.8rem 2.2rem;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+      font-weight: 580;
+      margin: 2.8rem 0 1.4rem 0;
+      color: #1c5985;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 3px dashed #b2d1f0;
+      padding-bottom: 0.6rem;
+    }
+
+    h2 span {
+      font-size: 2.7rem;
+    }
+
+    h3 {
+      font-size: 2rem;
+      font-weight: 500;
+      margin: 2rem 0 1rem;
+      color: #1b6a9e;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    p {
+      margin-bottom: 1.3rem;
+      font-weight: 350;
+      color: #1c425b;
+      font-size: 1.1rem;
+    }
+
+    /* griglia componenti RAL */
+    .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0 2rem;
+    }
+
+    .comp-card {
+      background: #ffffffee;
+      border-radius: 3rem;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 20px 35px -20px #1f6e9c;
+      transition: all 0.3s;
+      border: 1px solid white;
+      backdrop-filter: blur(2px);
+      text-align: center;
+    }
+
+    .comp-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      background: white;
+      border-color: #dba85a;
+      box-shadow: 0 30px 45px -25px #1a73a8;
+    }
+
+    .comp-icon {
+      font-size: 3.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .comp-title {
+      font-weight: 650;
+      font-size: 1.8rem;
+      color: #13669c;
+      margin: 0.5rem 0 0.3rem;
+    }
+
+    .badge-comp {
+      background: #d68f44;
+      color: #1b3142;
+      border-radius: 40px;
+      padding: 0.2rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-block;
+      margin: 1rem 0 0.2rem;
+    }
+
+    /* tabella aliquote */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffffee;
+      border-radius: 3rem;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -20px #1f6e9c;
+      margin: 2.5rem 0;
+      backdrop-filter: blur(4px);
+    }
+
+    th {
+      background: #1d77aa;
+      color: white;
+      font-weight: 500;
+      padding: 1.2rem 1.5rem;
+      text-align: left;
+      font-size: 1.2rem;
+    }
+
+    td {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #c4e2fc;
+      vertical-align: top;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* strip grafica */
+    .graphic-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      background: #dbeafb;
+      border-radius: 150px;
+      padding: 2rem 3.5rem;
+      margin: 2.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .graphic-icon {
+      font-size: 4rem;
+      filter: drop-shadow(0 8px 18px #5692c2);
+      transition: transform 0.2s;
+    }
+
+    .graphic-icon:hover {
+      transform: rotate(5deg) scale(1.1);
+    }
+
+    .footer-links {
+      margin-top: 5rem;
+      padding-top: 2.8rem;
+      border-top: 6px solid #c3daf5;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.8rem;
+      justify-content: center;
+      font-size: 1.3rem;
+      background: #eaf3fc;
+      border-radius: 80px 80px 40px 40px;
+      padding: 2rem 3.5rem;
+      backdrop-filter: blur(3px);
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.8rem 2.2rem;
+      border-radius: 70px;
+      background: white;
+      border: 1px solid #b2d3f0;
+      color: #1b6fa7;
+      transition: all 0.25s;
+      box-shadow: 0 6px 18px #9ec0df;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-links a:hover {
+      background: #def0fd;
+      border-color: #c99e4b;
+      transform: scale(1.07);
+      box-shadow: 0 18px 28px #8bb3d2;
+    }
+
+    .blink-dot {
+      width: 16px;
+      height: 16px;
+      background: #ecaa4b;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 12px;
+      animation: dotPulse 1.8s infinite;
+    }
+
+    @keyframes dotPulse {
+      0% { opacity: 0.4; background: #cc8228; }
+      50% { opacity: 1; background: #ffc468; box-shadow: 0 0 22px #f5a93b; }
+      100% { opacity: 0.4; background: #cc8228; }
+    }
+
+    @media (max-width: 750px) {
+      .article-card { padding: 2rem 1.5rem; }
+      h1 { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="article-card">
+  <h1>
+    <span class="title-emoji">📄💶</span> Guida alla RAL
+  </h1>
+  <div class="subhead">Retribuzione Annua Lorda · cosa include · perché il netto è più basso</div>
+
+  <!-- intro con punto lampeggiante -->
+  <p><span class="blink-dot"></span> <strong>Hai mai guardato il tuo contratto e ti sei chiesto perché lo stipendio che arriva in banca è così diverso dalla cifra scritta?</strong> La risposta sta nella RAL (Retribuzione Annua Lorda) e in tutte le trattenute che avvengono prima che i soldi arrivino a te. Questa guida spiega cos'è la RAL, cosa include (paga base, tredicesima, bonus) e quali sono le principali voci di trattenuta—INPS, IRPEF, imposte locali—che portano allo stipendio netto.</p>
+
+  <!-- strip grafica -->
+  <div class="graphic-strip">
+    <span class="graphic-icon">💰📊</span>
+    <span class="graphic-icon">🏛️📉</span>
+    <span class="graphic-icon">🧾✂️</span>
+    <span class="graphic-icon">💶✅</span>
+  </div>
+
+  <!-- griglia componenti RAL -->
+  <h2><span>🧩</span> Cosa include la RAL?</h2>
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-icon">💼📆</div>
+      <div class="comp-title">paga base</div>
+      <p>Il tuo stipendio mensile moltiplicato per il numero di mensilità (di solito 12, 13 o 14).</p>
+      <span class="badge-comp">fondamentale</span>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">🎄➕</div>
+      <div class="comp-title">tredicesima / quattordicesima</div>
+      <p>Mensilità aggiuntive pagate a dicembre e/o giugno. Fanno parte della RAL.</p>
+      <span class="badge-comp">extra incluso</span>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">🏆✨</div>
+      <div class="comp-title">bonus e premi</div>
+      <p>Premi di produzione, bonus di risultato, straordinari forfettizzati se previsti dal contratto.</p>
+      <span class="badge-comp">variabile</span>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon">🚗💼</div>
+      <div class="comp-title">benefit tassabili</div>
+      <p>Alcuni benefit (auto aziendale, fringe benefit) possono essere inclusi nel lordo.</p>
+      <span class="badge-comp">da verificare</span>
+    </div>
+  </div>
+
+  <!-- blocco lampeggiante: differenza lordo/netto -->
+  <div class="blink-ral">
+    <h3 style="margin-top:0; display:flex; gap:12px;"><span>💸🔽</span> perché il netto è più basso? le trattenute</h3>
+    <p>Dalla RAL vengono sottratti tre gruppi principali di trattenute obbligatorie prima che tu veda un euro in busta. Ecco dove vanno i tuoi soldi: <strong>contributi INPS</strong> (previdenza), <strong>IRPEF</strong> (imposta sul reddito progressiva), e <strong>imposte locali</strong> (regionali e comunali). A questi si aggiungono eventuali detrazioni che riducono l'imponibile. Un <strong>Calcolo stipendio netto</strong> preciso considera tutte queste voci.</p>
+  </div>
+
+  <!-- tabella dettaglio trattenute -->
+  <h2><span>📋</span> le principali voci di trattenuta</h2>
+  <table>
+    <thead><tr><th>voce</th><th>cos'è</th><th>a quanto ammonta (esempi)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>🏦 INPS</strong></td><td>contributi previdenziali per pensione e assistenza</td><td>lavoratore dipendente: circa 9,19% · apprendista: circa 5,84%</td></tr>
+      <tr><td><strong>💰 IRPEF</strong></td><td>imposta sul reddito progressiva (scaglioni 2026)</td><td>23% fino a 28k€ · 35% fino a 50k€ · 43% oltre 50k€</td></tr>
+      <tr><td><strong>🗺️ addizionali locali</strong></td><td>imposta regionale e comunale (varia per residenza)</td><td>regionale: 1,2%–3,3% · comunale: 0%–0,9%</td></tr>
+      <tr><td><strong>💸 detrazioni</strong></td><td>riducono l'IRPEF lorda (lavoro dipendente, familiari a carico)</td><td>circa 1.880€ annui per redditi bassi, più detrazioni per figli</td></tr>
+    </tbody>
+  </table>
+
+  <!-- strip grafica 2 -->
+  <div style="display: flex; gap: 24px; justify-content: space-around; font-size: 3.2rem; margin: 2.5rem 0;">
+    <span>🏛️➡️📉</span> <span>📊➡️🧾</span> <span>💶➡️✅</span> <span>🔍⚖️</span>
+  </div>
+
+  <!-- approfondimento: come si calcola il netto -->
+  <h2><span>🧮</span> dal lordo al netto: il percorso</h2>
+  <p>Il calcolo segue questi passaggi fondamentali:</p>
+  <ol style="margin:1rem 0 1.5rem 2.5rem; font-size:1.1rem; color:#1c425b;">
+    <li><strong>RAL</strong> – è il punto di partenza (es. 35.000€).</li>
+    <li><strong>– contributi INPS a carico lavoratore</strong> (es. 9,19% = 3.216€). Resta l'imponibile previdenziale.</li>
+    <li><strong>– IRPEF lorda</strong> calcolata a scaglioni sull'imponibile. Per 35.000€: (28.000×23%) + (7.000×35%) = 6.440€ + 2.450€ = 8.890€.</li>
+    <li><strong>– addizionali locali</strong> (es. reg. 2% + com. 0,5% = 875€).</li>
+    <li><strong>+ detrazioni</strong> (es. 1.880€ per lavoro dipendente).</li>
+    <li><strong>= Stipendio netto annuo</strong> (35.000 – 3.216 – 8.890 – 875 + 1.880 = 23.899€).</li>
+    <li><strong>/ mensilità</strong> (es. 13) = netto mensile (1.838€).</li>
+  </ol>
+
+  <!-- esempi pratici -->
+  <h3><span>👥</span> esempi reali (2026)</h3>
+  <table>
+    <thead><tr><th>profilo</th><th>RAL</th><th>INPS</th><th>IRPEF</th><th>addizionali</th><th>detrazioni</th><th>netto annuo</th><th>netto/mese (13)</th></tr></thead>
+    <tbody>
+      <tr><td>single, nessun figlio</td><td>30.000€</td><td>2.757€</td><td>6.266€</td><td>~750€</td><td>~800€</td><td>21.027€</td><td>1.617€</td></tr>
+      <tr><td>con 1 figlio a carico</td><td>45.000€</td><td>4.135€</td><td>11.240€</td><td>~1.125€</td><td>~1.120€</td><td>29.620€</td><td>2.278€</td></tr>
+    </tbody>
+  </table>
+
+  <!-- bonus e tagli 2026 -->
+  <div style="background: #e1effa; border-radius: 3rem; padding: 2rem 2.5rem; margin: 2.5rem 0;">
+    <span style="font-size:2.8rem; margin-right: 16px;">📉🔔</span>
+    <strong style="font-size:1.7rem;">novità 2026: taglio IRPEF e bonus</strong>
+    <ul style="margin-top:1rem; list-style-type: '✅ '; padding-left: 2.2rem;">
+      <li>secondo scaglione IRPEF scende dal 35% al 33% (redditi 28k–50k).</li>
+      <li>confermato taglio cuneo fiscale: 6% per redditi fino a 2.692€/mese, 7% fino a 1.923€/mese.</li>
+      <li>bonus IRPEF da 100€ mensili per redditi fino a 15.000€.</li>
+    </ul>
+    <p style="margin-top:1rem;">Questi cambiamenti aumentano lo stipendio netto. Uno strumento aggiornato come un <strong>Calcolo stipendio netto</strong> li include automaticamente.</p>
+  </div>
+
+  <!-- limiti e consigli -->
+  <h3><span>⚠️</span> limiti del calcolo automatico</h3>
+  <p>I calcolatori online danno una stima molto vicina alla realtà, ma ci sono fattori che possono modificare il netto effettivo:</p>
+  <ul style="margin:1rem 0 1.5rem 2.5rem; list-style-type: '🔹 '; font-size:1.1rem;">
+    <li>detrazioni specifiche (spese mediche, interessi mutuo, figli a carico con percentuali variabili).</li>
+    <li>contratti collettivi (CCNL) che possono prevedere bonus o trattenute particolari.</li>
+    <li>eventuali accordi aziendali (premi di risultato, welfare).</li>
+  </ul>
+  <p>Usa il calcolatore come ottimo punto di partenza, ma per una verifica precisa affidati a un consulente del lavoro o al tuo CAF.</p>
+
+  <!-- nota finale educativa -->
+  <p><span class="blink-dot"></span> Capire la differenza tra RAL e stipendio netto è il primo passo per leggere consapevolmente la propria busta paga e valutare offerte di lavoro. La RAL è il punto di partenza, ma è il netto che determina il tuo potere d'acquisto mensile. Con le aliquote 2026 e i nuovi tagli, il divario si riduce leggermente—ma conoscere le voci di trattenuta ti aiuta a pianificare meglio le tue finanze.</p>
+
+  <!-- link esattamente come richiesto: alla fine -->
+  <div class="footer-links">
+    <a href="https://calcolostipendionettoo.it/" target="_blank" rel="noopener">🧮 Calcolo stipendio netto</a>
+  </div>
+
+  <!-- footer -->
+  <div style="text-align: center; margin-top: 2.2rem; font-size: 0.95rem; color: #1f6e9c;">
+    💶 guida RAL · 100% educativo, zero promozione.
+  </div>
+</div>
+</body>
+</html>
